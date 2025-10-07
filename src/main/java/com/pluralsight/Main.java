@@ -10,7 +10,8 @@ public class Main {
         //ask the user which filenames to use.
         String inputFilename = ConsoleHelper.promptForString("Enter the name of the employee file to process");
         String outputFilename = ConsoleHelper.promptForString("Enter the name of the payroll file to create");
-
+//String inputFilename = "payroll.csv";
+//String outputFilename = "payroll-output.csv";
 
         try{
             //open the read file
@@ -25,7 +26,10 @@ public class Main {
             // begin reading through it one line at a time.
             String input;
             while((input = bufReader.readLine()) != null){
+
+
                 Employee emp = makeEmployeeFromCode(input);
+              //  System.out.println(emp);
                 bufferedWriter.write(emp.getEmployeeId() + "|" + emp.getName() + "|" + emp.getGrossPay() + "\n");
             }
 

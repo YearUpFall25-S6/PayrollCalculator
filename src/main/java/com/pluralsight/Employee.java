@@ -45,6 +45,16 @@ public class Employee {
         this.payRate = payRate;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "\"employeeId\"=" + employeeId +
+                ", \"name\"='" + name + '\'' +
+                ", \"hoursWorked\"=" + hoursWorked +
+                ", \"payRate\"=" + payRate +
+                '}';
+    }
+
     public double getGrossPay(){
         if (hoursWorked > 40){
             return (40 * payRate) + ((hoursWorked - 40) * payRate * 1.5);
