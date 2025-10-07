@@ -9,9 +9,9 @@ public class Main {
             FileReader fileReader = new FileReader("payroll.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
 
-            String line;
-            while((line = bufReader.readLine()) != null){
-                Employee emp = makeEmployeeFromCode(line);
+            String input;
+            while((input = bufReader.readLine()) != null){
+                Employee emp = makeEmployeeFromCode(input);
                 displayEmployee(emp);
             }
 
