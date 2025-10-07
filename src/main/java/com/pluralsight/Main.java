@@ -1,19 +1,40 @@
 package com.pluralsight;
 
+import com.sun.tools.jconsole.JConsoleContext;
+
 import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        try{
-            FileReader fileReader = new FileReader("payroll.csv");
-            BufferedReader bufReader = new BufferedReader(fileReader);
+        //ask the user which filenames to use.
+        String inputFilename = ConsoleHelper.promptForString("Enter the name of the employee file to process");
+        String outputFilename = ConsoleHelper.promptForString("Enter the name of the payroll file to create");
 
+
+        try{
+            //open the read file
+            // open the write file
+
+            FileReader fileReader = new FileReader(inputFilename);
+            BufferedReader bufReader = new BufferedReader(fileReader);
+            FileWriter fileWriter = new FileWriter(outputFilename);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write("id|name|gross pay\n");
+
+            // begin reading through it one line at a time.
             String input;
             while((input = bufReader.readLine()) != null){
                 Employee emp = makeEmployeeFromCode(input);
-                displayEmployee(emp);
+                bufferedWriter.write(emp.getEmployeeId() + "|" + emp.getName() + "|" + emp.getGrossPay() + "\n");
             }
+
+
+            //close both files...
+            bufReader.close();
+            fileReader.close();
+            bufferedWriter.close();
+            fileWriter.close();
 
         }
         catch(Exception e){
